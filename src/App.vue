@@ -1,28 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <qrcode :value="codeValue" :size="size" level="H"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import qrcode from "qrcode.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    qrcode
+  },
+  data() {
+    return {
+      codeValue: "https://github.com/tanghuibo/bar-or-qrcode-generator",
+      size: 300
+    };
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

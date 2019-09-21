@@ -6398,6 +6398,11 @@ q@^1.1.2:
   resolved "https://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qrcode.vue@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.npm.taobao.org/qrcode.vue/download/qrcode.vue-1.6.3.tgz#6e3655ff5ed7d1a57ca8ee3df953c7085a39611e"
+  integrity sha1-bjZV/17X0aV8qO49+VPHCFo5YR4=
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
