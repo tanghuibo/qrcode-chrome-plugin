@@ -11,7 +11,7 @@ export default {
     return [
       mainDoc,
       ...[...mainDoc.querySelectorAll("iframe")]
-        .map(iframe => iframe.contentDocment)
+        .map(iframe => iframe.contentDocument)
         .filter(doc => doc != null)
     ];
   },
