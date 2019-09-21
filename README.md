@@ -4,15 +4,15 @@
 
 ## 下载
 
-[下载地址](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/target/chrome-plug-in.crx)
+[下载地址](https://github.com/tanghuibo/qrcode-chrome-plug-in/raw/master/target/chrome-plug-in.crx)
 
 ### 安装
 
-![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/install.gif)
+![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/install.gif?raw=true)
 
 ### 使用
 
-![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/use.gif)
+![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/use.gif?raw=true)
 
 ## 编译&调试
 
