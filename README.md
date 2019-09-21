@@ -14,7 +14,7 @@
 
 ![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/use.gif?raw=true)
 
-## 编译&调试
+## 开发
 
 ### 调试
 
