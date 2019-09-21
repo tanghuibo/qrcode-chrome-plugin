@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style>
+        .btnDiv {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 35px;
+        }
+
+        .contentDiv {
+            align-items: flex-end;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .btn {
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            width: 122px;
+            height: 122px;
+            text-align: center;
+            background-color: #1296db;
+            border-radius: 50%;
+            color: white;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btnMsg {
+            display: block;
+            overflow: hidden;
+            width: 90px;
+            margin: 0 auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .content {
+            width: 200px;
+            height: 300px;
+        }
+
+        .titleImg {
+            width: 25px;
+            padding-left: 20px;
+        }
+
+        .titleMessage {
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 20px;
+        }
+
+        .titleDiv {
+            margin-top: 15px;
+        }
+
+        .likeIcon {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .likeMessage {
+            font-size: 15px;
+            color: #606060;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="content">
+        <div class="titleDiv">
+            <img class="titleImg" src="./img/icon.png">
+            <spn class="titleMessage">划词二维码</spn>
+        </div>
+        <div class="btnDiv">
+            <div class="btn" id="sendMsgBtn">
+                <span class="btnMsg">打开二维码</span>
+            </div>
+        </div>
+        <div class="contentDiv">
+            <a href="javascript:void(0);" id="likeA" class="likeMessage">支持一下 </a>
+            <svg id="likeBtn" t="1569065326806" class="likeIcon" viewBox="0 0 1024 1024" version="1.1"
+                xmlns="http://www.w3.org/2000/svg" p-id="2349" width="32" height="32">
+                <path
+                    d="M884.875894 423.143253 646.970506 423.143253c92.185562-340.464205-63.516616-357.853247-63.516616-357.853247-65.993017 0-52.312436 52.182476-57.3031 60.881602 0 166.502152-176.849824 296.971645-176.849824 296.971645l0 472.171899c0 46.607504 63.516616 63.393819 88.433098 63.393819l357.452111 0c33.641191 0 61.036122-88.224344 61.036122-88.224344 88.434122-300.70569 88.434122-390.177444 88.434122-390.177444C944.657442 418.179195 884.875894 423.143253 884.875894 423.143253L884.875894 423.143253 884.875894 423.143253zM884.875894 423.143253"
+                    p-id="2350" fill="#efb336"></path>
+                <path
+                    d="M251.671415 423.299819 109.214912 423.299819c-29.420053 0-29.873378 28.89612-29.873378 28.89612l29.420053 476.202703c0 30.309306 30.361495 30.309306 30.361495 30.309306L262.420223 958.707948c25.686009 0 25.458835-20.049638 25.458835-20.049638L287.879058 459.411271C287.879058 422.837284 251.671415 423.299819 251.671415 423.299819L251.671415 423.299819 251.671415 423.299819zM251.671415 423.299819"
+                    p-id="2351" fill="#efb336"></path>
+            </svg>
+        </div>
+
+        <script type="text/javascript" src="./js/pop.js"></script>
+    </div>
+
+
+</body>
+
+</html>
