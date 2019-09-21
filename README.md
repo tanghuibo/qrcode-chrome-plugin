@@ -8,11 +8,11 @@
 
 ### 安装
 
-![演示图片](./screenshots/install.gif)
+![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/install.gif?raw=true)
 
 ### 使用
 
-![演示图片](./screenshots/use.gif)
+![演示图片](https://github.com/tanghuibo/qrcode-chrome-plug-in/blob/master/screenshots/use.gif?raw=true)
 
 ## 编译&调试
 
