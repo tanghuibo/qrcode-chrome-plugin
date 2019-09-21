@@ -1,29 +1,57 @@
-# qrcode-chrome-plug-in
+# 划词二维码
 
-## Project setup
-```
-yarn install
+## 使用教程
+
+## 下载
+
+[下载地址](./target/chrome-plug-in.crx)
+
+### 安装
+
+![演示图片](./screenshots/install.gif)
+
+### 使用
+
+![演示图片](./screenshots/use.gif)
+
+## 编译&调试
+
+### 调试
+
+1. 修改 ./src/mian.js
+
+> 修改前
+
+```javascript
+// 需要degub时打开
+//vueInit();
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  vueInit();
+  sendResponse(true);
+});
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
+> 修改后
+
+```javascript
+// 需要degub时打开
+vueInit();
+
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   vueInit();
+//   sendResponse(true);
+// });
 ```
 
-### Compiles and minifies for production
+2. 运行
+
+```bash
+yarn run server
 ```
+
+### 编译
+
+```bash
 yarn run build
 ```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
