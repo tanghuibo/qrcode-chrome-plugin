@@ -1,81 +1,36 @@
 <template>
-  <div :style="{padding: 0, margin: 0, width: '300px'}">
+  <div id="app">
+    <img src="./assets/logo.png">
     <div>
-      <div>
-        <qrcode :value="codeValue" :size="size" level="H" />
-      </div>
+      <p>
+        If Element is successfully added to this project, you'll see an
+        <code v-text="'<el-button>'"></code>
+        below
+      </p>
+      <el-button>el-button</el-button>
     </div>
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import qrcode from "qrcode.vue";
-import docmentUtils from "@/utils/docmentUtils.js";
+import HelloWorld from './components/HelloWorld.vue'
 
-console.log(docmentUtils);
-
-let { getAllDocment } = docmentUtils;
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    qrcode
-  },
-  data() {
-    return {
-      codeValue: "https://github.com/tanghuibo/bar-or-qrcode-generator",
-      size: 300,
-      domList: []
-    };
-  },
-  mounted() {
-    this.init();
-    setInterval(() => {
-      if (document.onmouseup == null) {
-        this.init();
-      }
-      this.setDomList(getAllDocment(document));
-    }, 2000);
-  },
-  methods: {
-    init() {
-      console.log("qrcode init");
-      this.changeDomList(getAllDocment(document));
-    },
-    setDomList(newDomList) {
-      if (newDomList.length != this.domList.length) {
-        this.changeDomList(newDomList);
-      }
-      for (let item of this.domList) {
-        if (newDomList.indexOf(item) < 0) {
-          this.changeDomList(newDomList);
-          break;
-        }
-      }
-    },
-    changeDomList(newDomList) {
-      console.log("find iframe dom");
-      this.domList = newDomList;
-      this.domList.forEach(item => {
-        (item.onmouseup = () => {
-          this.addOnmouseupGetSelect(item);
-        }),
-          (item.onmousemove = () => {
-            this.addOnmouseupGetSelect(item);
-          });
-      });
-    },
-    addOnmouseupGetSelect(el) {
-      this.getText(el);
-      el.onmouseup = () => {
-        this.getText(el);
-      };
-    },
-    getText(el) {
-      let text = el.getSelection().toString();
-      if (text != "") {
-        this.codeValue = text;
-      }
-    }
+    HelloWorld
   }
-};
+}
 </script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

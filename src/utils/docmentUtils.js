@@ -1,3 +1,4 @@
+import iStore from './iStore';
 export default {
   /**
    * appDiv是否初始化过
@@ -58,24 +59,18 @@ export default {
     let oneInner = mainDoc.createElement("div");
     oneInner.setAttribute(
       "style",
-      "position:fixed;left: 10px;top: 10px;background-color:  rgb(255, 255, 255); border: 2px solid #a0a0a0; z-index: 9999;"
+      "position:fixed;left: 10px;top: 10px;background-color:  rgb(255, 255, 255); border: 2px solid #a0a0a0; z-index: 9999; border-radius: 10px; padding: 0px 5px 5px 5px"
     );
     let appDiv = mainDoc.createElement("div");
-    let closeBtn = mainDoc.createElement("span");
     appDiv.setAttribute("id", appId);
-    closeBtn.innerText = "关闭";
-    closeBtn.setAttribute(
-      "style",
-      "border: none; float: right; cursor:pointer; padding: 0px 5px; font-size: 15px;"
-    );
-    oneInner.appendChild(closeBtn);
     oneInner.appendChild(appDiv);
     mainDoc.body.appendChild(oneInner);
     this.moveInit(oneInner, mainDoc);
     //删除
-    closeBtn.onclick = () => {
+    
+    iStore.setRemoveMethod(() => {
       this.removeDoc(oneInner, mainDoc);
       this.appDivIsInit = false;
-    };
+    });
   }
 };
