@@ -4638,6 +4638,11 @@ js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.9.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+jsbarcode@^3.5.8:
+  version "3.11.0"
+  resolved "https://registry.npm.taobao.org/jsbarcode/download/jsbarcode-3.11.0.tgz#20623e008b101ef45d0cce9c8022cdf49be28547"
+  integrity sha1-IGI+AIsQHvRdDM6cgCLN9JvihUc=
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.npm.taobao.org/jsbn/download/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -7968,6 +7973,13 @@ vm-browserify@^1.0.1:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha1-vXbWojMj4sqP+hICjcBFWcdfkBk=
+
+vue-barcode@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/vue-barcode/download/vue-barcode-1.2.0.tgz#e118c38c12a77da9be03e612c60ff6832c9a3a25"
+  integrity sha1-4RjDjBKnfam+A+YSxg/2gyyaOiU=
+  dependencies:
+    jsbarcode "^3.5.8"
 
 vue-cli-plugin-element@^1.0.1:
   version "1.0.1"

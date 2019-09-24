@@ -1,3 +1,9 @@
 module.exports = {
-  productionSourceMap: false
+  productionSourceMap: false,
+
+  css: {
+    extract: false
+  },
+
+  publicPath: ''
 }
