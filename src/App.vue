@@ -1,133 +1,102 @@
 <template>
   <div>
-    <transition name="el-fade-in-linear">
-      <div v-if="showQRCode" style="padding: 0; margin: 0;width: 300px;">
-        <div>
-          <i @click="closeDiv" class="closeBtn">
-            <svg
-              style="width: 20px; height: 20px"
-              t="1569342895178"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="2499"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M810.666667 273.493333L750.506667 213.333333 512 451.84 273.493333 213.333333 213.333333 273.493333 451.84 512 213.333333 750.506667 273.493333 810.666667 512 572.16 750.506667 810.666667 810.666667 750.506667 572.16 512z"
-                p-id="2500"
-              />
-            </svg>
-          </i>
-          <div class="codeImg">
-            <qrcode :value="codeValue" :size="size" level="H" />
-          </div>
-          <div>
-            <div class="qrCodeTipSpan" :title="codeValue">{{codeValue}}</div>
-            <el-button class="changeImg" @click="showBar" type="text">显示条形码</el-button>
-          </div>
-        </div>
+    <div class="chrome-qrcode-plugin-div">
+      <div>
+        <CloseButton @click="closeDiv" />
+        <transition name="el-fade-in-linear">
+          <QRCodeView v-if="showQRCode" @clickChange="setShowBar" :value="codeValue" />
+        </transition>
+        <transition name="el-fade-in-linear">
+          <BarCodeView v-if="showBarCode" @clickChange="setShowQR" :value="codeValue" />
+        </transition>
       </div>
-    </transition>
-    <transition name="el-fade-in-linear">
-      <div style="padding: 0; margin: 0;" v-if="showBarCode">
-        <div>
-          <i @click="closeDiv" class="closeBtn">
-            <svg
-              style="width: 20px; height: 20px"
-              t="1569342895178"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="2499"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M810.666667 273.493333L750.506667 213.333333 512 451.84 273.493333 213.333333 213.333333 273.493333 451.84 512 213.333333 750.506667 273.493333 810.666667 512 572.16 750.506667 810.666667 810.666667 750.506667 572.16 512z"
-                p-id="2500"
-              />
-            </svg>
-          </i>
-          <br />
-          <barcode :value="codeValue" displayValue="false">
-            <div
-              style="padding: 15px 20px; margin: 5px 10px; background-color: #fef0f0; border-radius: 6px; color: #f56c6c; font-size: 30px;"
-            >条形码不支持中文</div>
-          </barcode>
-          <div>
-            <div class="qrCodeTipSpan" style="overflow: hidden;" :title="codeValue">{{codeValue}}</div>
-            <el-button class="changeImg" @click="showQR" type="text">显示二维码</el-button>
-          </div>
-        </div>
-      </div>
-    </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import barcode from "vue-barcode";
-import qrcode from "qrcode.vue";
+import CloseButton from "@/components/CloseButton";
+import QRCodeView from "@/components/QRCodeView";
+import BarCodeView from "@/components/BarCodeView";
 import docmentUtils from "@/utils/docmentUtils.js";
 let { getAllDocment } = docmentUtils;
 import iStore from "@/utils/iStore";
 export default {
   name: "app",
   components: {
-    barcode,
-    qrcode
+    CloseButton,
+    QRCodeView,
+    BarCodeView
   },
   data() {
     return {
       codeValue: "hello world",
-      size: 300,
-      showQRCode: true,
-      showBarCode: false,
+      showQRCode: false,
+      showBarCode: true,
       domList: []
     };
   },
   mounted() {
     this.init();
     setInterval(() => {
+      //如果docment失去监听，则重新初始化
       if (document.onmouseup == null) {
         this.init();
       }
-      this.setDomList(getAllDocment(document));
+      //每两秒校验一下iframe是否改变
+      this.checkIframeChange(getAllDocment(document));
     }, 2000);
   },
   methods: {
-    showQR() {
+    setShowQR() {
+      //设置延迟动画
       this.showBarCode = false;
       setTimeout(() => {
         this.showQRCode = true;
       }, 200);
     },
-    showBar() {
+    setShowBar() {
+      //设置延迟显示动画
       this.showQRCode = false;
       setTimeout(() => {
         this.showBarCode = true;
       }, 200);
     },
+    /**
+     * 关闭悬浮框
+     */
     closeDiv() {
       iStore.removeMethod();
     },
+    /**
+     * 数据初始化
+     */
     init() {
       console.log("qrcode init");
-      this.changeDomList(getAllDocment(document));
+      this.changeIframeList(getAllDocment(document));
     },
-    setDomList(newDomList) {
+    /**
+     * 校验iframe是否改变
+     */
+    checkIframeChange(newDomList) {
+      //长度不一致说明存在改变
       if (newDomList.length != this.domList.length) {
-        this.changeDomList(newDomList);
+        this.changeIframeList(newDomList);
       }
+      /**
+       * 内容不一致说明存在改变
+       */
       for (let item of this.domList) {
         if (newDomList.indexOf(item) < 0) {
-          this.changeDomList(newDomList);
+          this.changeIframeList(newDomList);
           break;
         }
       }
     },
-    changeDomList(newDomList) {
+    /**
+     * 改变iframe事件
+     */
+    changeIframeList(newDomList) {
       console.log("find iframe dom");
       this.domList = newDomList;
       this.domList.forEach(item => {
@@ -139,12 +108,18 @@ export default {
           });
       });
     },
+    /**
+     * 添加鼠标弹起监听
+     */
     addOnmouseupGetSelect(el) {
       this.getText(el);
       el.onmouseup = () => {
         this.getText(el);
       };
     },
+    /**
+     * 获取被选中的文本，不为空则设置为二维码数组
+     */
     getText(el) {
       let text = el.getSelection().toString();
       if (text != "") {
@@ -155,40 +130,8 @@ export default {
 };
 </script>
 <style scoped>
-.closeBtn {
-  border: none;
-  float: right;
-  padding: 5px;
-  padding-bottom: 0px;
-  cursor: pointer;
-  padding-right: 2px;
-}
-.closeBtn:hover {
-  fill: #409eff;
-}
-
-.closeBtn:hover {
-  background: none;
-  color: #409eff;
-}
-.codeImg {
-  width: 330px;
-  height: 330px;
-}
-
-.qrCodeTipSpan {
-  width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  float: left;
-  padding: 5px;
-  font-family: "黑体";
-}
-.changeImg {
-  padding: 5px;
-  float: right;
-  background-color: white;
-  font-family: "黑体";
+.chrome-qrcode-plugin-div {
+  padding: 0;
+  margin: 0;
 }
 </style>

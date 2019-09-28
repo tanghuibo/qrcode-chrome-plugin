@@ -65,9 +65,9 @@ export default {
     appDiv.setAttribute("id", appId);
     oneInner.appendChild(appDiv);
     mainDoc.body.appendChild(oneInner);
+    //设置运行移动
     this.moveInit(oneInner, mainDoc);
-    //删除
-    
+    //设置悬浮框移除方法
     iStore.setRemoveMethod(() => {
       this.removeDoc(oneInner, mainDoc);
       this.appDivIsInit = false;
