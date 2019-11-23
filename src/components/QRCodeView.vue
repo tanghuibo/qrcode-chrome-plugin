@@ -9,7 +9,7 @@
         class="chrome-qrcode-plugin-qrcode-change-button"
         @click="clickChange"
         type="text"
-      >显示二维码</el-button>
+      >显示条形码</el-button>
     </div>
   </div>
 </template>

@@ -31,8 +31,8 @@ export default {
   data() {
     return {
       codeValue: "hello world",
-      showQRCode: false,
-      showBarCode: true,
+      showQRCode: true,
+      showBarCode: false,
       domList: []
     };
   },

@@ -14,7 +14,7 @@
         class="chrome-qrcode-plugin-barcode-change-button"
         @click="clickChange"
         type="text"
-      >显示条形码</el-button>
+      >显示二维码码</el-button>
     </div>
   </div>
 </template>
