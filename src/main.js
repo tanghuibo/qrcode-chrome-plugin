@@ -3,7 +3,7 @@ import App from "./App.vue";
 import docmentUtils from "./utils/docmentUtils";
 import './plugins/element.js'
 
-let appName = "qrcode-chrome-plug-in";
+let appName = "qrcode-chrome-plugin";
 Vue.config.productionTip = false;
 
 function vueInit() {

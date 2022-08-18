@@ -5,7 +5,7 @@ function getSimpleName(path) {
     return name[0] + "." + name[2];
 }
 fs.readdirSync(dir).forEach(filePath => {
-    let newFile = './chrome-plug-in/' + getSimpleName(filePath);
+    let newFile = './chrome-plugin/' + getSimpleName(filePath);
     if(fs.existsSync(newFile)) {
         fs.unlinkSync(newFile);
     }

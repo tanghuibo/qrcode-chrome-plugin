@@ -1,4 +1,4 @@
-let url = "https://github.com/tanghuibo/qrcode-chrome-plug-in";
+let url = "https://github.com/tanghuibo/qrcode-chrome-plugin";
 window.onload = () => {
   document.getElementById("sendMsgBtn").onclick = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
